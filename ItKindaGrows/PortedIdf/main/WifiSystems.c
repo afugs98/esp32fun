@@ -33,6 +33,7 @@ static esp_err_t WifiEventHandler(void *context, system_event_t *event) {
 	case SYSTEM_EVENT_STA_GOT_IP:
 		ESP_LOGI(TAG, "Station got ip: %s\n",
 				ip4addr_ntoa(&event->event_info.got_ip.ip_info.ip));
+		xEventGroupSetBits(wifiConnectedHandle, CONNECTED_BIT);
 		break;
 
 	case SYSTEM_EVENT_STA_DISCONNECTED:
@@ -42,7 +43,7 @@ static esp_err_t WifiEventHandler(void *context, system_event_t *event) {
 
 	case SYSTEM_EVENT_STA_CONNECTED:
 		ESP_LOGI(TAG, "Station connected...");
-		xEventGroupSetBits(wifiConnectedHandle, CONNECTED_BIT);
+
 		break;
 
 	default:

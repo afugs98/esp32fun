@@ -38,7 +38,7 @@ void app_main()
    remoteServer = new RemoteServer(user_name, node_id);
 
 // Update settings & send last loop's state
-   remoteServer->syncWithRemoteServer();
+//   remoteServer->syncWithRemoteServer();
 
 //// Demo settings
 //   printf("Light State:");
