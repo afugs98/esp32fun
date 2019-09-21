@@ -110,8 +110,10 @@ void RemoteServer::syncWithRemoteServer()
 
    esp_err_t err;
 
+   char * urlString = "http://marijauto.com/node/updateStatusNode/";
+
    esp_http_client_config_t config = {};
-   config.url = "http://marijauto.com/node/updateStatusNode/";
+   config.url = urlString;
    config.method = HTTP_METHOD_POST;
    config.event_handler = _http_event_handle;
 
@@ -119,13 +121,13 @@ void RemoteServer::syncWithRemoteServer()
 
    char thingToPost[512];
 
-   sprintf(thingToPost, "node_id=%s&user_name=%s&node_status=%s", "12345678123456781234567812345678", "admin", "\"status\":\"good\"");
+   sprintf(thingToPost, "node_id=%s&user_name=%s&node_status=%s", "12345678123456781234567812345678", "admin", "%7B%22status%22%3A%22good%22%7D");
    ESP_LOGI(TAG, "filled the tihing to post with \n%s\n", thingToPost);
 
    esp_http_client_handle_t client = esp_http_client_init(&config);
 //   esp_http_client_set_url(client, "http://httpbin.org/anything");
 //   esp_http_client_set_url(client, "http://marijauto.com/node/updateStatusNode");
-   esp_http_client_set_method(client, HTTP_METHOD_POST);
+//   esp_http_client_set_method(client, HTTP_METHOD_POST);
    esp_http_client_set_header(client, "Content-Type", "application/x-www-form-urlencoded");
    esp_http_client_set_post_field(client, thingToPost, strlen(thingToPost));
    err = esp_http_client_perform(client);

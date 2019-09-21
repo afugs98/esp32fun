@@ -36,13 +36,13 @@ static const char *TAG = "example";
 //"Content-Type: application/x-www-form-urlencoded\r\n"
 //"node_id=12345678123456781234567812345678&user_name=admin&node_status=%7B%22status%22%3A%22good%22%7D\r\n";
 
-static const char *REQUEST = "POST /node/updateStatusNode/ HTTP/1.1"
-   "Host: marijauto.com"
-   "Accept: */*"
-   "User-Agent: Mozilla/5.0 (compatible; Rigor/1.0.0; http://rigor.com)"
-   "Content-Type: application/x-www-form-urlencoded"
-   "Content-Length: 100"
-   "node_id=12345678123456781234567812345678&user_name=admin&node_status=%7B%22status%22%3A%22good%22%7D\r\n";
+static const char *REQUEST = "POST /node/updateStatusNode/ HTTP/1.1\r\n"
+   "Host: marijauto.com\r\n"
+//   "Accept: */*"
+//   "User-Agent: Mozilla/5.0 (compatible; Rigor/1.0.0; http://rigor.com)"
+   "Content-Type: application/x-www-form-urlencoded\r\n"
+   "Content-Length: 56\r\n"
+   "node_id=12345678123456781234567812345678&user_name=admin";//&node_status=%7B%22status%22%3A%22good%22%7D";
 
 static void http_get_task(void *pvParameters)
 {
