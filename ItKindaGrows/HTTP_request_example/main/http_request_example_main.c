@@ -32,7 +32,7 @@ static const char *TAG = "example";
 static const char *REQUEST = "POST " WEB_URL " HTTP/1.0\r\n"
     "Host: "WEB_SERVER"\r\n"
     "Content-Type: application/x-www-form-urlencoded\r\n"
-    "node_id=12345678123456781234567812345678&user_name=admin&node_status=\"status\":\"good\"\r\n";
+    "node_id=12345678123456781234567812345678&user_name=admin&node_status=%7B%22status%22%3A%22good%22%7D\r\n";
 
 static void http_get_task(void *pvParameters)
 {
